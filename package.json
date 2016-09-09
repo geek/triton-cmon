@@ -1,11 +1,11 @@
 {
-  "name": "triton-metric-agent-proxy",
-  "description": "Triton Metric Agent Proxy",
+  "name": "triton-cmon",
+  "description": "Triton Container Monitor",
   "version": "1.0.0",
   "author": "Joyent (joyent.com)",
   "repository": {
     "type": "git",
-    "url": "git://github.com/joyent/triton-metric-agent-proxy.git"
+    "url": "git://github.com/joyent/triton-cmon.git"
   },
   "private": false,
   "dependencies": {

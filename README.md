@@ -8,12 +8,12 @@
     Copyright (c) 2016, Joyent, Inc.
 -->
 
-# Triton Metric Agent
+# Triton Container Monitor
 
-This is the home of the compute node agent portion of the Triton Container
-Monitor solution. Triton Metric Agent Proxy acts as if it is many individual
-Prometheus monitoring agents by supporting a polling route per container on the
-compute node it resides on.
+This is the home of the public facing portion of the Triton Container
+Monitor solution. Triton CMON acts as if it is many individual Prometheus
+node exporters by supporting a polling route per container per datacenter
+that the polling user has access to.
 
 Please see
 [RFD 27](https://github.com/joyent/rfd/blob/master/rfd/0027/README.md#) for more
@@ -38,15 +38,14 @@ make check
 ```
 ## Documentation
 
-For an overview of Triton Metric Agent and the Triton Container Monitor solution
-, please see
+For an overview of the Triton Container Monitor solution, please see
 [RFD 27](https://github.com/joyent/rfd/blob/master/rfd/0027/README.md#).
 
-For documentation specific to Metric Agent, please see
+For documentation specific to CMON, please see
 [docs/README.md](docs/README.md).
 
 ## License
 
-"Triton Metric Agent" is licensed under the
+"Triton CMON" is licensed under the
 [Mozilla Public License version 2.0](http://mozilla.org/MPL/2.0/).
 See the file LICENSE.

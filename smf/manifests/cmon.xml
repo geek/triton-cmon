@@ -10,8 +10,8 @@
     Copyright (c) 2016, Joyent, Inc.
 -->
 
-<service_bundle type="manifest" name="metric-agent-proxy">
-  <service name="smartdc/agent/metric-agent-proxy" type="service" version="@@VERSION@@">
+<service_bundle type="manifest" name="cmon">
+  <service name="smartdc/agent/cmon" type="service" version="@@VERSION@@">
 
     <create_default_instance enabled="@@ENABLED@@"/>
     <single_instance/>
@@ -27,7 +27,7 @@
     <exec_method
       type="method"
       name="start"
-      exec="@@ROOT@@/smf/method/metric-agent-proxy %m"
+      exec="@@ROOT@@/smf/method/cmon %m"
       timeout_seconds="60">
       <method_context>
         <method_credential user="root" group="staff"/>

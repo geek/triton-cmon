@@ -14,7 +14,7 @@
 # included Makefiles (in eng.git) so that other teams can use them too.
 #
 
-NAME			:= metric-agent-proxy
+NAME			:= cmon
 NODE_PREBUILT_TAG	 = zone
 NODE_PREBUILT_VERSION	:= v0.12.9
 NODE_PREBUILT_IMAGE	 = b4bdc598-8939-11e3-bea4-8341f6861379
@@ -33,7 +33,7 @@ JSL_FILES_NODE   = $(JS_FILES)
 JSSTYLE_FILES	 = $(JS_FILES)
 JSSTYLE_FLAGS    = -f tools/jsstyle.conf
 
-# SMF_MANIFESTS_IN = smf/manifests/metric-agent-proxy.xml.in
+# SMF_MANIFESTS_IN = smf/manifests/cmon.xml.in
 
 include ./tools/mk/Makefile.defs
 ifeq ($(shell uname -s),SunOS)
@@ -65,7 +65,7 @@ test: all $(TAP) $(NODE_EXEC)
 .PHONY: release
 release: all docs $(SMF_MANIFESTS) $(NODE_EXEC)
 	@echo "Building $(RELEASE_TARBALL)"
-	@mkdir -p $(RELSTAGEDIR)/root/opt/triton/metric-agent-proxy
+	@mkdir -p $(RELSTAGEDIR)/root/opt/triton/cmon
 	@mkdir -p $(RELSTAGEDIR)/root/opt/smartdc/build
 	@mkdir -p $(RELSTAGEDIR)/site
 	@mkdir -p $(RELSTAGEDIR)/root/opt/smartdc/boot
@@ -79,10 +79,10 @@ release: all docs $(SMF_MANIFESTS) $(NODE_EXEC)
 		$(TOP)/smf \
 		$(TOP)/etc \
 		$(TOP)/tools \
-		$(RELSTAGEDIR)/root/opt/triton/metric-agent-proxy/
-	@mkdir -p $(RELSTAGEDIR)/root/opt/triton/metric-agent-proxy/build
+		$(RELSTAGEDIR)/root/opt/triton/cmon/
+	@mkdir -p $(RELSTAGEDIR)/root/opt/triton/cmon/build
 	cp -r   $(TOP)/build/node \
-		$(RELSTAGEDIR)/root/opt/triton/metric-agent-proxy/build/
+		$(RELSTAGEDIR)/root/opt/triton/cmon/build/
 	cp -R $(TOP)/node_modules/sdc-scripts/* $(RELSTAGEDIR)/root/opt/smartdc/boot/
 	@mkdir -p $(RELSTAGEDIR)/root/opt/local/bin
 	cp -R $(TOP)/boot/* $(RELSTAGEDIR)/root/opt/smartdc/boot/
@@ -95,8 +95,8 @@ publish: release
 		echo "error: 'BITS_DIR' must be set for 'publish' target"; \
 		exit 1; \
 	fi
-	mkdir -p $(BITS_DIR)/metric-agent-proxy
-	cp $(TOP)/$(RELEASE_TARBALL) $(BITS_DIR)/metric-agent-proxy/$(RELEASE_TARBALL)
+	mkdir -p $(BITS_DIR)/cmon
+	cp $(TOP)/$(RELEASE_TARBALL) $(BITS_DIR)/cmon/$(RELEASE_TARBALL)
 
 $(MAN_OUTDIR):
 	mkdir -p $@

@@ -10,7 +10,7 @@
 #
 
 #
-# SMF Startup script for metric-agent-proxy
+# SMF Startup script for cmon
 #
 
 set -o xtrace
@@ -20,10 +20,10 @@ set -o xtrace
 
 
 function setup_logadm {
-    mkdir -p -m 0755 /var/log/metric-agent-proxy
+    mkdir -p -m 0755 /var/log/cmon
     logadm -w metric_agent_logs -C 168 -S 1g -c -p 1h \
-        -t '/var/log/metric-agent-proxy/metric-agent-proxy_$nodename_%FT%H:%M:%S.log' \
-        /var/svc/log/*metric-agent-proxy*.log
+        -t '/var/log/cmon/cmon_$nodename_%FT%H:%M:%S.log' \
+        /var/svc/log/*cmon*.log
 
     # Move the smf_logs entry to run last (after the entries we just added) so
     # that the default '-C' (from
@@ -37,7 +37,7 @@ function setup_logadm {
 case "$1" in
 'start')
     setup_logadm
-    /usr/bin/ctrun -l child -o noorphan @@ROOT@@/node/bin/node --abort_on_uncaught_exception @@ROOT@@/bin/metric-agent-proxy &
+    /usr/bin/ctrun -l child -o noorphan @@ROOT@@/node/bin/node --abort_on_uncaught_exception @@ROOT@@/bin/cmon &
     ;;
 
 'stop')
