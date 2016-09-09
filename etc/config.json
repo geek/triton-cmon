@@ -1,0 +1,9 @@
+{
+  "logLevel": "debug",
+  "datacenter_name": "testdc",
+  "api": {
+   "username": "admin",
+   "password": "joypass123",
+   "port": 9090
+  }
+}

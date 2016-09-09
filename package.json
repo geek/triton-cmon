@@ -1,0 +1,26 @@
+{
+  "name": "triton-metric-agent-proxy",
+  "description": "Triton Metric Agent Proxy",
+  "version": "1.0.0",
+  "author": "Joyent (joyent.com)",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/joyent/triton-metric-agent-proxy.git"
+  },
+  "private": false,
+  "dependencies": {
+    "restify": "4.1.1",
+    "bunyan": "1.8.1",
+    "sdc-scripts": "git+https://github.com/joyent/sdc-scripts.git"
+  },
+  "devDependencies": {
+    "tape": "4.2.2",
+    "eslint": "2.13.1",
+    "eslint-plugin-joyent": "1.0.1"
+  },
+  "scripts": {
+    "start": "node ./server.js",
+    "test": "./node_modules/.bin/tap test/*.test.js"
+  },
+  "license": "MPL-2.0"
+}

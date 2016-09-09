@@ -1,0 +1,5 @@
+{
+    "name": "cns",
+    "path": "/opt/triton/metric-agent-proxy/etc/config.json",
+    "post_cmd": "/usr/sbin/svcadm restart metric-agent-proxy"
+}
