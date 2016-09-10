@@ -80,7 +80,7 @@ release: all docs $(SMF_MANIFESTS) $(NODE_EXEC)
 	@mkdir -p $(RELSTAGEDIR)/root/opt/smartdc/boot
 	cp -R $(TOP)/node_modules/sdc-scripts/* $(RELSTAGEDIR)/root/opt/smartdc/boot/
 	cp -R $(TOP)/boot/* $(RELSTAGEDIR)/root/opt/smartdc/boot/
-	(cd $(RELSTAGEDIR) && $(TAR) -jcf $(TOP)/$(RELEASE_TARBALL) root site)
+	(cd $(RELSTAGEDIR) && $(TAR) -jcf $(TOP)/$(RELEASE_TARBALL) root)
 	@rm -rf $(RELSTAGEDIR)
 
 .PHONY: publish
