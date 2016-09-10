@@ -7,11 +7,11 @@
     "type": "git",
     "url": "git://github.com/joyent/triton-cmon.git"
   },
-  "private": false,
+  "private": true,
   "dependencies": {
     "restify": "4.1.1",
     "bunyan": "1.8.1",
-    "sdc-scripts": "git+https://github.com/joyent/sdc-scripts.git"
+    "sdc-scripts": "git+https://github.com/joyent/sdc-scripts.git#17fc5c8"
   },
   "devDependencies": {
     "tape": "4.2.2",
