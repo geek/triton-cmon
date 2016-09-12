@@ -71,7 +71,6 @@ release: all docs $(SMF_MANIFESTS) $(NODE_EXEC)
 		$(TOP)/sapi_manifests \
 		$(TOP)/test \
 		$(TOP)/smf \
-		$(TOP)/etc \
 		$(RELSTAGEDIR)/root/opt/triton/cmon/
 	@mkdir -p $(RELSTAGEDIR)/root/opt/triton/cmon/build
 	cp -r   $(TOP)/build/node \

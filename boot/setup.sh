@@ -20,14 +20,14 @@ role=cmon
 
 # Include common utility functions (then run the boilerplate)
 source /opt/smartdc/boot/lib/util.sh
-CONFIG_AGENT_LOCAL_MANIFESTS_DIRS=/opt/smartdc/$role
+CONFIG_AGENT_LOCAL_MANIFESTS_DIRS=/opt/triton/$role
 sdc_common_setup
 
-/usr/sbin/svccfg import /opt/smartdc/cmon/smf/manifests/cmon.xml
+/usr/sbin/svccfg import /opt/triton/cmon/smf/manifests/cmon.xml
 
-# Add node_modules/bin to PATH
+# Add app bin dirs to the PATH.
 echo "" >>/root/.profile
-echo "export PATH=\$PATH:/opt/smartdc/$role/build/node/bin:/opt/smartdc/$role/node_modules/.bin" >>/root/.profile
+echo "export PATH=\$PATH:/opt/triton/$role/build/node/bin:/opt/triton/$role/node_modules/.bin" >>/root/.profile
 
 # Log rotation.
 sdc_log_rotation_add config-agent /var/svc/log/*config-agent*.log 1g
