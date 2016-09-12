@@ -2,6 +2,7 @@
 /tmp
 /build
 /etc/config.json
+/smf/manifests/cmon.xml
 docs/*.json
 docs/*.html
 cscope.in.out
