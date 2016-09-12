@@ -1,6 +1,7 @@
 /node_modules
 /tmp
 /build
+/etc/config.json
 docs/*.json
 docs/*.html
 cscope.in.out
