@@ -22,7 +22,7 @@ JSL_CONF_NODE	 = tools/jsl.node.conf
 JSL_FILES_NODE   = $(JS_FILES)
 JSSTYLE_FILES	 = $(JS_FILES)
 JSSTYLE_FLAGS    = -f tools/jsstyle.conf
-# SMF_MANIFESTS_IN = smf/manifests/cmon.xml.in
+SMF_MANIFESTS_IN = smf/manifests/cmon.xml.in
 
 NODE_PREBUILT_VERSION=v0.12.15
 ifeq ($(shell uname -s),SunOS)
@@ -72,7 +72,6 @@ release: all docs $(SMF_MANIFESTS) $(NODE_EXEC)
 		$(TOP)/test \
 		$(TOP)/smf \
 		$(TOP)/etc \
-		$(TOP)/tools \
 		$(RELSTAGEDIR)/root/opt/triton/cmon/
 	@mkdir -p $(RELSTAGEDIR)/root/opt/triton/cmon/build
 	cp -r   $(TOP)/build/node \
