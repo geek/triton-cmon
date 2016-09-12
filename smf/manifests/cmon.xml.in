@@ -37,7 +37,7 @@
 
     <exec_method type="method"
       name="start"
-      exec="node --abort_on_uncaught_exception bin/cmon.js &amp;"
+      exec="node --abort_on_uncaught_exception bin/cmon &amp;"
       timeout_seconds="30">
       <method_context working_directory="/opt/triton/cmon">
         <method_credential user="nobody"
