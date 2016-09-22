@@ -12,6 +12,7 @@
     "assert-plus": "1.0.0",
     "bunyan": "1.8.1",
     "restify": "4.1.1",
+    "sdc-clients": "9.5.0",
     "sdc-scripts": "git+https://github.com/joyent/sdc-scripts.git#17fc5c8",
     "vasync": "1.6.4",
     "verror": "1.8.1"
