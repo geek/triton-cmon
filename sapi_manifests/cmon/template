@@ -4,5 +4,8 @@
     "port": 9163,
     "vmapi": {
         "url": "http://{{{vmapi_domain}}}"
+    },
+    "napi": {
+        "url": "http://{{{napi_domain}}}"
     }
 }
