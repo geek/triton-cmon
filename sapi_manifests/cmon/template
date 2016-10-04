@@ -7,5 +7,10 @@
     },
     "napi": {
         "url": "http://{{{napi_domain}}}"
+    },
+    "changefeed_opts": {
+        "resource": "vm",
+        "subResources": ["destroyed","server_uuid","state"],
+        "instance": "{{{INSTANCE_UUID}}}"
     }
 }
