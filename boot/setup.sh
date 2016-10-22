@@ -15,13 +15,33 @@ set -o xtrace
 set -o errexit
 set -o pipefail
 
+DEFAULT_HOSTNAME="*.triton"
 PATH=/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin
 role=cmon
+
+function setup_tls_certificate() {
+    if [[ -f /data/tls/key.pem && -f /data/tls/cert.pem ]]; then
+        echo "TLS Certificate Exists"
+    else
+        echo "Generating TLS Certificate"
+        mkdir -p /data/tls
+        /opt/local/bin/openssl req -x509 -nodes -subj "/CN=$DEFAULT_HOSTNAME" \
+            -newkey rsa:2048 -keyout /data/tls/key.pem \
+            -out /data/tls/cert.pem -days 365
+        # Remember the certificate's host name used in the cert.
+        echo "$HOST" > /data/tls/hostname
+    fi
+}
 
 # Include common utility functions (then run the boilerplate)
 source /opt/smartdc/boot/lib/util.sh
 CONFIG_AGENT_LOCAL_MANIFESTS_DIRS=/opt/triton/$role
 sdc_common_setup
+
+# Mount our delegate dataset at '/data'.
+zfs set mountpoint=/data zones/$(zonename)/data
+
+setup_tls_certificate
 
 /usr/sbin/svccfg import /opt/triton/cmon/smf/manifests/cmon.xml
 
