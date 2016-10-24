@@ -12,10 +12,5 @@
         "resource": "vm",
         "subResources": ["destroyed","server_uuid","state"],
         "instance": "{{{INSTANCE_UUID}}}"
-    },
-    "useTls": {{^USE_TLS}}false{{/USE_TLS}}{{#USE_TLS}}{{{USE_TLS}}}{{/USE_TLS}},
-    "tls": {
-        "requestCert": true,
-        "rejectUnauthorized": false
     }
 }
