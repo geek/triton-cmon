@@ -8,6 +8,9 @@
     "napi": {
         "url": "http://{{{napi_domain}}}"
     },
+    "mahi": {
+        "url": "http://{{{mahi_domain}}}"
+    },
     "changefeed_opts": {
         "resource": "vm",
         "subResources": ["destroyed","server_uuid","state"],

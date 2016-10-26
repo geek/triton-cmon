@@ -13,9 +13,11 @@
     "bunyan": "1.8.1",
     "changefeed": "1.2.1",
     "http-signature": "1.1.1",
+    "mahi": "2.0.1",
     "restify": "4.1.1",
     "sdc-clients": "10.0.0",
     "sdc-scripts": "git+https://github.com/joyent/sdc-scripts.git#17fc5c8",
+    "sshpk": "1.10.1",
     "vasync": "1.6.4",
     "verror": "1.8.1"
   },
