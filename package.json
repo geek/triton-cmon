@@ -13,6 +13,7 @@
     "bunyan": "1.8.1",
     "changefeed": "1.2.1",
     "http-signature": "1.1.1",
+    "lomstream": "1.1.0",
     "mahi": "2.0.1",
     "restify": "4.1.1",
     "sdc-clients": "10.0.0",
