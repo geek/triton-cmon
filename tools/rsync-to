@@ -39,6 +39,7 @@ rsync -av ${TOP}/ \
     $NODE:/zones/$ZONE/root/opt/triton/cmon/ \
     $rsyncOpts \
     --exclude .git/ \
+    --exclude /node_modules/ \
     --exclude /deps/ \
     --exclude /docs/ \
     --exclude /tmp/ \

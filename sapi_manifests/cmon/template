@@ -19,7 +19,7 @@
     "throttle_opts": {
         "burst": 1000,
         "rate" : 100,
-        "username: true,
+        "username": true,
         "overrides": {
             "{{{ufds_admin_login}}}": {
                 "burst": 0,
