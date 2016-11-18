@@ -148,13 +148,13 @@ root@e3902c56-cea8-691b-fa78-963e2447682a:~# resolvconf -u
 
 Generate key and cert from your CoaL user private key:
 ```
-root@e3902c56-cea8-691b-fa78-963e2447682a:~/.ssh# openssl rsa -in admin_private_rsa -outform
+root@e3902c56-cea8-691b-fa78-963e2447682a:~/.ssh# openssl rsa -in your_private_rsa -outform
 pem >promkey.pem
 writing RSA key
-root@e3902c56-cea8-691b-fa78-963e2447682a:~/.ssh# openssl req -new -key promkey.pem -out promcsr.pem -subj "/CN=admin"
+root@e3902c56-cea8-691b-fa78-963e2447682a:~/.ssh# openssl req -new -key promkey.pem -out promcsr.pem -subj "/CN=YOUR_ACCOUNT_NAME"
 root@e3902c56-cea8-691b-fa78-963e2447682a:~/.ssh# openssl x509 -req -days 365 -in promcsr.pem -signkey promkey.pem -out promcert.pem
 Signature ok
-subject=/CN=admin
+subject=/CN=richard
 Getting Private key
 ```
 
