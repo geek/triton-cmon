@@ -148,11 +148,14 @@ root@e3902c56-cea8-691b-fa78-963e2447682a:~# resolvconf -u
 
 Generate key and cert from your CoaL user private key:
 ```
-root@e3902c56-cea8-691b-fa78-963e2447682a:~/.ssh# openssl rsa -in your_private_rsa -outform
+root@e3902c56-cea8-691b-fa78-963e2447682a:~/.ssh# openssl rsa -in \
+your_private_rsa -outform
 pem >promkey.pem
 writing RSA key
-root@e3902c56-cea8-691b-fa78-963e2447682a:~/.ssh# openssl req -new -key promkey.pem -out promcsr.pem -subj "/CN=YOUR_ACCOUNT_NAME"
-root@e3902c56-cea8-691b-fa78-963e2447682a:~/.ssh# openssl x509 -req -days 365 -in promcsr.pem -signkey promkey.pem -out promcert.pem
+root@e3902c56-cea8-691b-fa78-963e2447682a:~/.ssh# openssl req -new -key \
+promkey.pem -out promcsr.pem -subj "/CN=YOUR_ACCOUNT_NAME"
+root@e3902c56-cea8-691b-fa78-963e2447682a:~/.ssh# openssl x509 -req -days 365 \
+-in promcsr.pem -signkey promkey.pem -out promcert.pem
 Signature ok
 subject=/CN=richard
 Getting Private key
@@ -160,7 +163,9 @@ Getting Private key
 
 Test from the LX zone that the CMON endpoint us up and running:
 ```
-root@e3902c56-cea8-691b-fa78-963e2447682a:~# curl --insecure --cert-type pem --cert your_cert.pem --key your_key.pem "https://cmon.coal.cns.joyent.us:9163/discover"
+root@e3902c56-cea8-691b-fa78-963e2447682a:~# curl --insecure --cert-type pem \
+--cert your_cert.pem --key your_key.pem \
+"https://cmon.coal.cns.joyent.us:9163/discover"
 ```
 
 Install Prometheus from the joyent/prometheus fork on the CMON-8 branch:
