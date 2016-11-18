@@ -146,6 +146,18 @@ root@e3902c56-cea8-691b-fa78-963e2447682a:~# vim /etc/resolvconf/resolv.conf.d/b
 root@e3902c56-cea8-691b-fa78-963e2447682a:~# resolvconf -u
 ```
 
+Generate key and cert from your CoaL user private key:
+```
+root@e3902c56-cea8-691b-fa78-963e2447682a:~/.ssh# openssl rsa -in admin_private_rsa -outform
+pem >promkey.pem
+writing RSA key
+root@e3902c56-cea8-691b-fa78-963e2447682a:~/.ssh# openssl req -new -key promkey.pem -out promcsr.pem -subj "/CN=admin"
+root@e3902c56-cea8-691b-fa78-963e2447682a:~/.ssh# openssl x509 -req -days 365 -in promcsr.pem -signkey promkey.pem -out promcert.pem
+Signature ok
+subject=/CN=admin
+Getting Private key
+```
+
 Test from the LX zone that the CMON endpoint us up and running:
 ```
 root@e3902c56-cea8-691b-fa78-963e2447682a:~# curl --insecure --cert-type pem --cert your_cert.pem --key your_key.pem "https://cmon.coal.cns.joyent.us:9163/discover"
