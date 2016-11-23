@@ -199,6 +199,7 @@ scrape_configs:
       endpoint: 'cmon.coal.cns.joyent.us'
       insecure_skip_verify: true
       key: 'your_key.pem'
+      version: 1
 ```
 
 Start up prometheus:
