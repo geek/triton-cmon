@@ -1,6 +1,6 @@
-# cmon zone
+# cmon and cmon-agent
 
-Install cmon and cmon-agent:
+Install:
 
 ```
 [root@headnode (coal) ~]# curl https://gist.github.com/richardkiene/724a343804c17444444412ff791912a5 > install_cmon.sh
