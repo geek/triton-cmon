@@ -1,48 +1,27 @@
 # cmon zone
 
-
-Use the experimental sdcadm:
+Install cmon and cmon-agent:
 
 ```
-[root@headnode (coal) ~]# latest=$(updates-imgadm -C experimental list name=sdcadm -j \
-| json -c 'this.tags.buildstamp.indexOf("CMON-8")===0' -a uuid | tail -1)
-
-[root@headnode (coal) ~]# sdcadm self-update -C experimental $latest
+[root@headnode (coal) ~]# curl https://gist.github.com/richardkiene/724a343804c17444444412ff791912a5 > install_cmon.sh
+[root@headnode (coal) ~]# chmod +x install_cmon.sh
+[root@headnode (coal) ~]# ./install_cmon.sh
 Using channel experimental
 Update to sdcadm 1.12.0 (CMON-8-20161117T045143Z-gba152e9)
 Download update from https://updates.joyent.com
-Run sdcadm installer (log at /var/sdcadm/self-updates/20161117T180432Z/install.log)
-Updated to sdcadm 1.12.0 (CMON-8-20161117T045143Z-gba152e9, elapsed 12s)
-```
-
-Initial cmon setup in a DC:
-
-```
-[root@headnode (coal) ~]# sdcadm post-setup cmon -C experimental
-Downloading image 0fdeedbe-abd6-11e6-ae0a-cbfa539d2a8d
-    (cmon@CMON-8-20161116T081955Z-g070134c)
-Imported image 0fdeedbe-abd6-11e6-ae0a-cbfa539d2a8d
-    (cmon@CMON-8-20161116T081955Z-g070134c)
+Run sdcadm installer (log at /var/sdcadm/self-updates/20161130T230339Z/install.log)
+Updated to sdcadm 1.12.0 (CMON-8-20161117T045143Z-gba152e9, elapsed 7s)
+Downloading image 1986611a-b1d2-11e6-8191-63df1548239f
+    (cmon@CMON-8-20161123T230630Z-g124069f)
+Imported image 1986611a-b1d2-11e6-8191-63df1548239f
+    (cmon@CMON-8-20161123T230630Z-g124069f)
 Creating "cmon" service
 Creating "cmon" instance
-Created VM efdb32b7-3502-4db4-bc4b-d2fe314f6105 (cmon0)
-Setup "cmon" (52s)
-```
-
-Update to latest build in experimental channel:
-
-```
-[root@headnode (coal) ~]# sdcadm up -C experimental cmon
+Created VM bdbf71c7-ef60-409a-b338-575b6bf93f7e (cmon0)
+Setup "cmon" (58s)
 Finding candidate update images for the "cmon" service.
 Using channel experimental
 Up-to-date.
-```
-# cmon agent
-
-And add a 'cmon-agent' SAPI service:
-
-```
-[root@headnode (coal) ~]# sdcadm experimental add-new-agent-svcs
 Checking for minimum SAPI version
 Checking if service 'vm-agent' exists
 Checking if service 'net-agent' exists
@@ -59,39 +38,29 @@ Checking if service 'hagfish-watcher' exists
 Checking if service 'smartlogin' exists
 Adding service for agent 'cmon-agent'
 Add new agent services finished (elapsed 0s).
-```
-
-Install the latest "CMON-8-*" experimental agentshar:
-
-```
-[root@headnode (coal) ~]# latest=$(updates-imgadm -C experimental list name=agentsshar -j \
-| json -c 'this.tags.buildstamp.indexOf("CMON-8")===0' -a uuid | tail -1)
-[root@headnode (coal) ~]# sdcadm experimental update-agents $latest --all -C experimental
 Found agentsshar 671b7f40-b479-4cbf-b758-7b96299fa098 (1.0.0-CMON-8-20161118T014828Z-g5c4baca)
 Finding servers to update
 
 This update will make the following changes:
     Download agentsshar 671b7f40-b479-4cbf-b758-7b96299fa098
         (1.0.0-CMON-8-20161118T014828Z-g5c4baca)
-    Update GZ agents on 1 (of 1) servers using
+    Update GZ agents on 4 (of 4) servers using
         agentsshar 1.0.0-CMON-8-20161118T014828Z-g5c4baca
-
-Would you like to continue? [y/N] y
 
 Downloading agentsshar from updates server (channel "experimental")
     to /var/tmp/agent-671b7f40-b479-4cbf-b758-7b96299fa098.sh
 Copy agentsshar to assets dir: /usbkey/extra/agents
 Create /usbkey/extra/agents/latest symlink
-Starting agentsshar update on 1 servers
-...ting node.config [=======================>] 100%        1
-...ading agentsshar [=======================>] 100%        1
-...lling agentsshar [=======================>] 100%        1
+Starting agentsshar update on 4 servers
+Updating node.config                                        [==============================================================================================================================================>] 100%        4
+Downloading agentsshar                                      [==============================================================================================================================================>] 100%        4
+Installing agentsshar                                       [==============================================================================================================================================>] 100%        4
 Deleting temporary /var/tmp/agent-671b7f40-b479-4cbf-b758-7b96299fa098.sh
 Reloading sysinfo on updated servers
 Sysinfo reloaded for all the running servers
 Refreshing config-agent on all the updated servers
 Config-agent refreshed on updated servers
-Successfully updated agents (3m51s)
+Successfully updated agents (2m51s)
 ```
 
 Now you can watch the agent:
@@ -165,7 +134,7 @@ Test from the LX zone that the CMON endpoint us up and running:
 ```
 root@e3902c56-cea8-691b-fa78-963e2447682a:~# curl --insecure --cert-type pem \
 --cert your_cert.pem --key your_key.pem \
-"https://cmon.coal.cns.joyent.us:9163/discover"
+"https://cmon.coal.cns.joyent.us:9163/v1/discover"
 ```
 
 Install Prometheus from the joyent/prometheus fork on the CMON-8 branch:
