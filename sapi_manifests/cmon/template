@@ -5,8 +5,8 @@
     "vmapi": {
         "url": "http://{{{vmapi_domain}}}"
     },
-    "napi": {
-        "url": "http://{{{napi_domain}}}"
+    "cnapi": {
+        "url": "http://{{{cnapi_domain}}}"
     },
     "mahi": {
         "url": "http://{{{mahi_domain}}}"
