@@ -7,7 +7,7 @@
 #
 
 #
-# Copyright 2016 Joyent, Inc.
+# Copyright 2017 Joyent, Inc.
 #
 
 export PS4='[\D{%FT%TZ}] ${BASH_SOURCE}:${LINENO}: ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'
