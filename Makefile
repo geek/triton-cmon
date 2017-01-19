@@ -22,6 +22,9 @@ JSL_CONF_NODE	 = tools/jsl.node.conf
 JSL_FILES_NODE   = $(JS_FILES)
 JSSTYLE_FILES	 = $(JS_FILES)
 JSSTYLE_FLAGS    = -f tools/jsstyle.conf
+ESLINT		 = ./node_modules/.bin/eslint
+ESLINT_CONF	 = tools/eslint.node.conf
+ESLINT_FILES	 = $(JS_FILES)
 SMF_MANIFESTS_IN = smf/manifests/cmon.xml.in
 
 NODE_PREBUILT_VERSION=v4.6.0
@@ -89,6 +92,10 @@ publish: release
 	fi
 	mkdir -p $(BITS_DIR)/$(NAME)
 	cp $(TOP)/$(RELEASE_TARBALL) $(BITS_DIR)/$(NAME)/$(RELEASE_TARBALL)
+
+.PHONY: check
+check:: $(ESLINT)
+	$(ESLINT) -c $(ESLINT_CONF) $(ESLINT_FILES)
 
 include ./tools/mk/Makefile.deps
 ifeq ($(shell uname -s),SunOS)
